@@ -55,7 +55,7 @@ public class ProductRepositoryTest {
 
         //verify count of products in DB
         long productCount = productRepository.count();
-        assertEquals(productCount, 1);
+        assertEquals(productCount, 2);
 
         //get all products, list should only have one
         Iterable<Product> products = productRepository.findAll();
