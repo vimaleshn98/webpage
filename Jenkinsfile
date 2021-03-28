@@ -15,7 +15,7 @@ pipeline{
                 }
             }
         }
-    }
+    
      stage("Test"){
             steps{
                 echo "Maven Test"
@@ -49,6 +49,7 @@ pipeline{
                 }
             }
         }
+    }
     post{
         always{
             echo "========always========"
