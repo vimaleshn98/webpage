@@ -24,7 +24,7 @@ pipeline{
             post{
                 success{
                     junit 'target/surefire-reports/**/*.xml'
-                    echo "========Maven Test stage executed successfully  ${New_Version}========"
+                    echo "========Maven Test stage executed successfully========"
 
                 }
                 failure{
@@ -40,7 +40,7 @@ pipeline{
             post{
                 success{
                     archiveArtifacts 'target/*.jar'
-                    echo "========Maven Packaging stage executed successfully  ${New_Version}========"
+                    echo "========Maven Packaging stage executed successfully========"
 
                 }
                 
