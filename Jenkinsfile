@@ -1,4 +1,9 @@
 pipeline{
+    environment { 
+        registry = "7349216534/webapp" 
+        registryCredential = 'dockerhub_id' 
+        dockerImage = '' 
+    }
     agent any
     stages{
         stage("build"){
@@ -49,6 +54,23 @@ pipeline{
                 }
             }
         }
+        stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
+            } 
+        }
+        stage('Deploy our image') { 
+            steps { 
+                script {              
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
+
     }
     post{
         always{
