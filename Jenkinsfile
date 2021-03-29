@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage("build"){
             steps{
-                bat 'mvn -version'
+                bat 'mvn clean'
                 bat 'mvn compile'
             }
             post{
@@ -19,7 +19,7 @@ pipeline{
      stage("Test"){
             steps{
                 echo "Maven Test"
-                bat 'mvn test'
+                bat 'mvn -Dmaven.test.failure.ignore=true test'
             }
             post{
                 success{
@@ -35,7 +35,7 @@ pipeline{
         stage("Packaging"){
             steps{
                 echo "Maven Packaging"
-                bat 'mvn package'
+                bat 'mvn -B -DskipTests clean package'
             }
             post{
                 success{

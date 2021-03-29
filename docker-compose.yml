@@ -1,0 +1,7 @@
+version: '3'
+services:
+  kanban-app:
+      build: .
+      container_name: webapi
+      ports:
+        - 8086:8086
